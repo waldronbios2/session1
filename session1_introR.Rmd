@@ -1,0 +1,76 @@
+---
+title: "BIOS 621/821 Session 1 - multiple linear regression in R"
+author: "Levi Waldron"
+output: beamer_presentation
+---
+
+Application: Cholesterol vs. Age association
+========================================================
+
+Figure out this command using `File - Import Dataset`
+
+```{r}
+library(readr)
+chol <- read_table2("cholesterol.tsv", 
+    col_types = cols(age = col_double()))
+summary(chol)
+```
+
+Example: Cholesterol vs. Age scatterplot
+========================================================
+
+Take Data Science Module 1 "Data Visualization Basics" first if you aren't familiar with `ggplot2`:
+```{r, message=FALSE}
+library(ggplot2)
+ggplot(chol, aes(x=age, y=cholesterol, shape=state, color=state)) + 
+  geom_point(size=4) +
+  geom_smooth(method=lm, se = FALSE)
+```
+
+
+Example: Cholesterol vs. Age linear model
+========================================================
+
+\tiny
+```{r}
+fit <- lm(cholesterol ~ age * state, data=chol)
+summary(fit)
+```
+
+Example: Cholesterol vs. Age ANOVA table
+========================================================
+
+```{r}
+anova(fit)
+```
+
+
+Example: Cholesterol vs. Age diagnostic plots
+========================================================
+
+```{r}
+par(mfrow=c(2, 2))
+plot(fit)
+```
+
+Example: Cholesterol vs. Age partial F-test
+========================================================
+
+```{r}
+fit1 <- lm(cholesterol ~ state, data=chol)
+fit2 <- lm(cholesterol ~ state + age, data = chol)
+anova(fit1, fit2)
+```
+
+Example: Cholesterol vs. Age backwards selection
+========================================================
+
+\small
+```{r}
+library(MASS)
+fit <- lm(cholesterol ~ age * state, data=chol)
+step <- stepAIC(fit, direction = "backward")
+```
+\small
+AIC = Akaike's Information Criterion
+
