@@ -5,8 +5,10 @@ author: "Levi Waldron"
 institute: "CUNY SPH"
 output:
   html_document:
+    toc: yes
     df_print: paged
-    fonttheme: structurebold
+    theme: cerulean
+    number_sections: yes
 ---
 
 # Application: Cholesterol vs. Age association
