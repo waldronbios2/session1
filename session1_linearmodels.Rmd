@@ -1,11 +1,31 @@
 ---
-title: "BIOS 621/821 Session 1 - multiple linear regression review"
+title: "BIOS 621 / 821 Session 1"
+subtitle: "Multiple linear regression review"
 author: "Levi Waldron"
-output: beamer_presentation
+output:
+  slidy_presentation: default
+  beamer_presentation:
+    colortheme: dove
+    df_print: kable
+    fonttheme: structurebold
+    slide_level: 2
+    theme: Hannover
+institute: CUNY SPH
 ---
 
-Outline - session 1
-========================================================
+# Learning Objectives and Outline
+
+## Learning Objectives
+
+* identify systematic and random components of a multiple linear regression model
+* define terminology used in a multiple linear regression model
+* define and explain the use of dummy variables
+* interpret multiple linear regression coefficients for continuous and categorical variables
+* use model formulae to multiple linear models
+* define and interpret interactions between variables
+* interpret ANOVA tables
+
+## Outline
 
 * multiple regression terminology and notation
     + continuous & categorical predictors
@@ -13,9 +33,11 @@ Outline - session 1
     + ANOVA tables
     + Model formulae
 
-Multiple Linear Regression Model (sec. 4.2)
-========================================================
-Systematic part of model:
+# Multiple Linear Regression
+
+## Systematic part of model
+
+For more detail: Vittinghoff section 4.2
 
 $$
 E[y|x] = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_p
@@ -27,9 +49,7 @@ $$
 - $x_p$ are the individual predictors or independent variables
 - $\beta_p$ are the regression coefficients
 
-Multiple Linear Regression Model (cont'd)
-========================================================
-Random part of model:
+## Random part of model
 
 $y_i = E[y_i|x_i] + \epsilon_i$
 
@@ -44,21 +64,21 @@ Assumption: $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma_\epsilon^2)$
 * Constant variance at every value of predictors
 * Values that are statistically independent
 
-Continuous predictors
-========================================================
+## Continuous predictors
+
 * **Coding:** as-is, or may be scaled to unit variance (which results in _adjusted_ regression coefficients)
 * **Interpretation for linear regression:** An increase of one unit of the predictor results in this much difference in the continuous outcome variable
     + *additive model*
 
-Binary predictors (2 levels)
-========================================================
+## Binary predictors (2 levels)
+
 * **Coding:** indicator or dummy variable (0-1 coding)
 * **Interpretation for linear regression:** the increase or decrease in average outcome levels in the group coded “1”, compared to the reference category (“0”)
    + _e.g._ $E(y|x) = \beta_0 + \beta_1 x$ 
    + where x={ 1 if male, 0 if female }
 
-Multilevel Categorical Predictors (Ordinal or Nominal)
-========================================================
+## Multilevel Categorical Predictors (Ordinal or Nominal)
+
 * **Coding:** $K-1$ dummy variables for $K$-level categorical variables *
 * **Interpretation for linear regression:** as above, the comparisons are done with respect to the reference category
 * Testing significance of multilevel categorical predictor: partial F-test, a.k.a. nested ANOVA
@@ -66,31 +86,31 @@ Multilevel Categorical Predictors (Ordinal or Nominal)
 \small
 &#42; STATA and R code dummy variables automatically, behind-the-scenes
 
-Inference from multiple linear regression
-=========================================
+## Inference from multiple linear regression
 
 * Coefficients are t-distributed when assumptions are correct
 * Variance in the estimates of each coefficient can be calculated
 * The t-test of the null hypothesis $H_0: \beta_1 = 0$ and from confidence intervals tests whether $x_1$ predicts $y$, *holding other predictors constant*
     + often used in causal inference to control for confounding: see section 4.4
     
-Interaction (effect modification)
-========================================================
+# Interaction (effect modification)
+
+## How is interaction / effect modification modeled?
 Interaction is modeled as the product of two covariates:
 $$
 E[y|x] = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{12} x_1*x_2
 $$
 
 
-Interaction (effect modification)
-========================================================
+## What is interaction / effect modification?
 
 ![Interaction between coffee and time of day on performance](coffee_interaction.jpg)
   
 Image credit: http://personal.stevens.edu/~ysakamot/
 
-ANOVA table
-========================================================
+# Analysis of Variance
+
+## Review of the ANOVA table
 
 Source of Variation | Sum Sq | Deg Fr | Mean Sq | F  
 ------------------- | ------ | -- | ------- | --  
@@ -102,30 +122,28 @@ Total | TSS | n-1 | |
 * $n$ = Number of observations
 * **F** is F-distributed with $k$ numerator and $n-(k-1)$ denominator degrees of freedom
 
-Regression in R: model formulae
-========================================================
+# Model formulae
+
+## What are model formulae?
 
 [Model formulae tutorial](http://ww2.coastal.edu/kingw/statistics/R-tutorials/formulae.html)
 
-* regression functions in R such as `aov()`, `lm()`, `glm()`, and `coxph()` use a "model formula" interface.
+* Model formulae are shortcuts to defining linear models in R
+* Regression functions in R such as `aov()`, `lm()`, `glm()`, and `coxph()` all accept the "model formula" interface.
 * The formula determines the model that will be built (and tested) by the R procedure. The basic format is:
 
 > response variable ~ explanatory variables
 
 * The tilde means "is modeled by" or "is modeled as a function of." 
 
-Model formulae (cont'd)
-========================================================
-
-Model formula for simple linear regression: 
+## Model formula for simple linear regression
 
 > y ~ x
 
 * where "x" is the explanatory (independent) variable
 * "y" is the response (dependent) variable. 
 
-Model formulae (cont'd)
-========================================================
+## Model formula for multiple linear regression
 
 Additional explanatory variables would be added as follows: 
 
@@ -135,8 +153,7 @@ Note that "+" does not have its usual meaning, which would be achieved by:
 
 > y ~ I(x + z)
 
-Types of standard linear models
-========================================================
+## Types of standard linear models
 
 ```
 lm( y ~ u + v)
@@ -145,8 +162,7 @@ lm( y ~ u + v)
 `u` and `v` numeric: **multiple regression**  
 one factor, one numeric: **ANCOVA**
 
-Model formulae (cont'd)
-========================================================
+## Model formulae cheatsheet
 
 symbol  | example | meaning  
 ------- | ------- | --------  
@@ -160,8 +176,7 @@ symbol  | example | meaning
 &nbsp;  | &nbsp; | all interactions up to three way  
 1 | -1 | intercept: delete the intercept  
 
-Model formulae (cont'd)
-========================================================
+## Model formulae comprehension Q&A #1
 
 How to interpret the following model formulae?
 
@@ -169,8 +184,7 @@ y ~ u + v + w + u:v + u:w + v:w
 y ~ u * v * w - u:v:w  
 y ~ (u + v + w)^2  
 
-Model formulae (cont'd)
-========================================================
+## Model formulae comprehension Q&A #2
 
 How to interpret the following model formulae?
 
