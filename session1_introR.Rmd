@@ -1,11 +1,15 @@
 ---
-title: "BIOS 621/821 Session 1 - multiple linear regression in R"
+title: "BIOS 621/821 Session 1 lab"
+subtitle: "Multiple linear regression in R"
 author: "Levi Waldron"
-output: beamer_presentation
+institute: "CUNY SPH"
+output:
+  html_document:
+    df_print: paged
+    fonttheme: structurebold
 ---
 
-Application: Cholesterol vs. Age association
-========================================================
+# Application: Cholesterol vs. Age association
 
 Figure out this command using `File - Import Dataset`
 
