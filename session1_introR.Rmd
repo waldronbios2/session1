@@ -1,14 +1,22 @@
 ---
-title: "BIOS 621/821 Session 1 lab"
-subtitle: "Multiple linear regression in R"
+title: "Session 1 lab: Multiple linear regression in R"
 author: "Levi Waldron"
-institute: "CUNY SPH"
+institute: "CUNY SPH Biostatistics 2"
 output:
+  slidy_presentation: default
   html_document:
-    toc: yes
     df_print: paged
-    theme: cerulean
     number_sections: yes
+    theme: cerulean
+    toc: yes
+  beamer_presentation:
+    colortheme: dove
+    df_print: paged
+    fonttheme: structurebold
+    slide_level: 2
+    theme: Hannover
+  pdf_document:
+    toc: yes
 ---
 
 # Application: Cholesterol vs. Age association

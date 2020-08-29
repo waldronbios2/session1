@@ -1,16 +1,20 @@
 ---
-title: "BIOS 621 / 821 Session 1"
-subtitle: "Multiple linear regression review"
+title: "Session 1: Multiple linear regression review"
 author: "Levi Waldron"
+institute: "CUNY SPH Biostatistics 2"
 output:
   slidy_presentation: default
+  html_document:
+    df_print: paged
+    number_sections: yes
+    theme: cerulean
+    toc: yes
   beamer_presentation:
     colortheme: dove
-    df_print: kable
+    df_print: paged
     fonttheme: structurebold
     slide_level: 2
     theme: Hannover
-institute: CUNY SPH
 ---
 
 # Learning Objectives and Outline
