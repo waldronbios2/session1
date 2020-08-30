@@ -1,13 +1,13 @@
 ---
 title: "Session 1: Multiple linear regression review"
 author: "Levi Waldron"
-institute: "CUNY SPH Biostatistics 2"
 output:
-  slidy_presentation: default
+  pdf_document:
+    toc: yes
   html_document:
     df_print: paged
     number_sections: yes
-    theme: cerulean
+    theme: lumen
     toc: yes
   beamer_presentation:
     colortheme: dove
@@ -15,27 +15,30 @@ output:
     fonttheme: structurebold
     slide_level: 2
     theme: Hannover
+  slidy_presentation: default
+institute: CUNY SPH Biostatistics 2
 ---
 
-# Learning Objectives and Outline
+# Learning objectives and outline
 
-## Learning Objectives
+## Learning objectives
 
-* identify systematic and random components of a multiple linear regression model
-* define terminology used in a multiple linear regression model
-* define and explain the use of dummy variables
-* interpret multiple linear regression coefficients for continuous and categorical variables
-* use model formulae to multiple linear models
-* define and interpret interactions between variables
-* interpret ANOVA tables
+1. identify systematic and random components of a multiple linear regression model
+2. define terminology used in a multiple linear regression model
+3. define and explain the use of dummy variables
+4. interpret multiple linear regression coefficients for continuous and categorical variables
+5. use model formulae to multiple linear models
+6. define and interpret interactions between variables
+7. interpret ANOVA tables
+
 
 ## Outline
 
-* multiple regression terminology and notation
-    + continuous & categorical predictors
-    + interactions
-    + ANOVA tables
-    + Model formulae
+1. multiple regression terminology and notation
+2. continuous & categorical predictors
+3. interactions
+4. ANOVA tables
+5. Model formulae
 
 # Multiple Linear Regression
 
@@ -195,4 +198,3 @@ How to interpret the following model formulae?
 > y ~ u + v + w + u:v + u:w + v:w + u:v:w  
 > y ~ u * v * w  
 > y ~ (u + v + w)^3  
-
