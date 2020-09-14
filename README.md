@@ -1,6 +1,6 @@
-start:   <!-- badges -->
-  [![Actions Status](https://github.com/waldronbios2/session1/workflows/build/badge.svg)](https://github.com/waldronbios2/session1/actions)
-  <!-- badges: end -->
+<!-- badges: start -->
+[![Actions Status](https://github.com/waldronbios2/session1/workflows/build/badge.svg)](https://github.com/waldronbios2/session1/actions)
+<!-- badges: end -->
 
 # Session 1: Multiple linear regression review
 
