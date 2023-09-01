@@ -30,7 +30,7 @@ Figure out this command using `File - Import Dataset`
 
 ```{r}
 library(readr)
-chol <- read_table2("cholesterol.tsv", 
+chol <- read_table("cholesterol.tsv", 
     col_types = cols(age = col_double()))
 summary(chol)
 ```
