@@ -1,3 +1,11 @@
+name: Build and Deploy pkgdown Site
+
+on:
+  push:
+    branches:
+      - main # Or 'master', depending on your repository's default branch
+  workflow_dispatch:
+
 jobs:
   build-deploy:
     runs-on: ubuntu-22.04
@@ -28,7 +36,6 @@ jobs:
         with:
           packages: any::remotes, any::pkgdown
 
-      # New step to install the package itself
       - name: Install local package
         run: Rscript -e "remotes::install_local()"
 
