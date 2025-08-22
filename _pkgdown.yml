@@ -12,7 +12,8 @@ template:
   params:
     bootswatch: lumen
     ganalytics: UA-176789980-1
-
+    bs_version: 5
+    
 navbar:
   structure:
     left:  [home, articles]
@@ -39,3 +40,4 @@ navbar:
 authors:
   Levi Waldron:
     href: https://waldronlab.io
+
