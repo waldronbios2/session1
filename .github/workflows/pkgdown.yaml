@@ -1,20 +1,4 @@
-name: Build and Deploy pkgdown Site
-
-on:
-  push:
-    branches:
-      - main # Or 'master', depending on your repository's default branch
-  workflow_dispatch:
-
-jobs:
-  build-deploy:
-    runs-on: ubuntu-22.04
-    container: rocker/verse:4.4
-    permissions:
-      contents: read
-      pages: write
-
-    steps:
+steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -31,11 +15,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-r-4.4-
 
+      # Add this new step to install the system dependency for Beamer
+      - name: Install LaTeX Beamer
+        run: sudo apt-get update && sudo apt-get install -y texlive-beamer
+
       - name: Install R package dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: any::remotes, any::pkgdown
 
+      # The rest of your steps remain the same...
       - name: Install local package
         run: Rscript -e "remotes::install_local()"
 
