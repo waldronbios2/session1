@@ -39,6 +39,9 @@ jobs:
       - name: Install local package
         run: Rscript -e "remotes::install_local()"
 
+      - name: Install LaTeX Beamer
+        run: sudo apt-get update && sudo apt-get install -y texlive-beamer
+
       - name: Build pkgdown site
         run: Rscript -e 'pkgdown::build_site()'
         
