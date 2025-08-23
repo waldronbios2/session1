@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-22.04
     container: rocker/verse:4.4
     permissions:
-      contents: read
+      contents: write
       pages: write
 
     steps:
