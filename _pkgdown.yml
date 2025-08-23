@@ -2,7 +2,7 @@ home:
   strip_header: true
   links:
   - text: Full course notes
-    href: https://waldronbios2.github.io/cunybios2/
+    href: https://bios2.waldronlab.io
   - text: git clone
     href: https://github.com/waldronbios2/session1.git
 
